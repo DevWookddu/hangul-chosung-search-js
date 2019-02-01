@@ -1,0 +1,32 @@
+{
+  "name": "hangul-chosung-search-js",
+  "version": "0.2.0",
+  "description": "hangul-js를 이용한 한글 초성(+중성+종성) 검색 라이브러리입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node example.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevWookddu/hangul-chosung-search-js.git"
+  },
+  "keywords": [
+    "hangul",
+    "korean",
+    "chosung",
+    "initialconsonant",
+    "consonant",
+    "초성",
+    "초성검색",
+    "한글"
+  ],
+  "author": "Jeong Yongwook",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DevWookddu/hangul-chosung-search-js/issues"
+  },
+  "homepage": "https://github.com/DevWookddu/hangul-chosung-search-js#readme",
+  "dependencies": {
+    "hangul-js": "^0.2.5"
+  }
+}

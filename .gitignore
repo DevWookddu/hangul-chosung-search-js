@@ -1,0 +1,9 @@
+.DS_Store
+.DS_Store?
+.Trashes
+node_modules
+build
+.module-cache
+npm-debug.log
+logs
+*.log
