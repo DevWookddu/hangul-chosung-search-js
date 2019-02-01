@@ -1,21 +1,19 @@
-var hangul = require('hangul-js')
-
-module.exports = (function () {
+(function ChosungSearch () {
   'use strict';
 
   var _existOnlyVowel = function (searchStrArr) {
     return searchStrArr.some(function (char) {
-      return hangul.isVowel(char)
+      return Hangul.isVowel(char)
     })
   }
 
   var _parseStr = function (str) {
     var chosungStr = ''
     var parsedArr = str.map(function (char) {
-      var disassembledChar = hangul.d(char)
+      var disassembledChar = Hangul.d(char)
       chosungStr += disassembledChar[0]
       var jungsungArr = disassembledChar.reduce(function (acc, ch) {
-        if (hangul.isVowel(ch)) {
+        if (Hangul.isVowel(ch)) {
           acc.push(ch)
         }
         return acc
@@ -24,8 +22,8 @@ module.exports = (function () {
         char: char,
         chosung: disassembledChar[0],
         jungsungArr: jungsungArr,
-        endsWithConsonant: hangul.endsWithConsonant(char),
-        isComplete: hangul.isComplete(char)
+        endsWithConsonant: Hangul.endsWithConsonant(char),
+        isComplete: Hangul.isComplete(char)
       }
     })
     return {
@@ -70,7 +68,7 @@ module.exports = (function () {
     var searchStrChosung = parsedObj.chosungStr
     var parsedArr = parsedObj.parsedArr
     var targetStrChosung = targetStr.split('').reduce(function (acc, char) {
-      return acc + hangul.d(char)[0]
+      return acc + Hangul.d(char)[0]
     }, '').toLowerCase()
 
     var offset = -1
@@ -85,13 +83,13 @@ module.exports = (function () {
             if (p.endsWithConsonant) {
               return targetStr[pIndex] === p.char
             } else {
-              disassembleTargetStr = hangul.d(targetStr[pIndex])
+              disassembleTargetStr = Hangul.d(targetStr[pIndex])
               return p.jungsungArr.every(function (js, jsIndex) {
                 return js === disassembleTargetStr[jsIndex + 1]
               })
             }
           } else {
-            return hangul.d(targetStrChosung[pIndex])[0] === p.chosung
+            return Hangul.d(targetStrChosung[pIndex])[0] === p.chosung
           }
         })
 
@@ -106,8 +104,8 @@ module.exports = (function () {
       return false
     }
   }
-
-  return {
+  
+  window.ChosungSearch = {
     isSearch: isSearch,
     searchList: searchList,
     is: isSearch,

@@ -1,6 +1,6 @@
 # hangul-chosung-search-js
 
-> hangul-js(https://www.npmjs.com/package/hangul-js)를 활용한 한글 초성 검색 라이브러리입니다. 
+> [hangul.js](https://www.npmjs.com/package/hangul-js)를 활용한 한글 초성 검색 라이브러리입니다. 
 >
 > 이 라이브러리의 README.md 문서 작성에는 hangul-js의 README.md 문서 작성 방식을 참고하였습니다.
 
@@ -12,11 +12,11 @@ npm install hangul-chosung-search
 
 ### CDN 방식 사용 방법
 
-Requirejs 방식: 일반 웹페이지에서 사용하시려면 require.js를 먼저 호출해주셔야 합니다.
+일반 웹페이지에서 사용하시려면 hangul.js를 먼저 로드해주셔야 합니다.
   
 ```html
-<script src="require.js"></script>
-<script src="https://unpkg.com/hangul-chosung-search-js@0.2.0/index.js" type="text/javascript"></script>
+<script src="https://unpkg.com/hangul-js@0.2.5/hangul.js"></script>
+<script src="https://unpkg.com/hangul-chosung-search-js@0.2.1/cdn.js" type="text/javascript"></script>
 ```
 
 ChosungSearch라는 변수로 전역에 노출됩니다.
