@@ -103,8 +103,8 @@ module.exports = (function () {
           offset = targetStrChosung.indexOf(searchStrChosung)
         }
       }
-      return false
     }
+    return false
   }
 
   return {

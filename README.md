@@ -18,7 +18,7 @@ npm install hangul-chosung-search-js
   
 ```html
 <script src="https://unpkg.com/hangul-js@0.2.5/hangul.js"></script>
-<script src="https://unpkg.com/hangul-chosung-search-js@0.2.2/cdn.js" type="text/javascript"></script>
+<script src="https://unpkg.com/hangul-chosung-search-js@0.2.3/cdn.js" type="text/javascript"></script>
 ```
 
 ChosungSearch라는 변수로 전역에 노출됩니다.
@@ -42,15 +42,15 @@ var ChosungSearch = require('hangul-chosung-search-js')
 ChosungSearch.is처럼 짧은 이름으로 사용할 수도 있습니다.
 
 ```js
-ChosungSearch.isSearch('ㄱ', '광고주') // true
+ChosungSearch.isSearch('ㄱ', '광고주') // true, 초성 일치
 
 ChosungSearch.isSearch('고', '광고주') // true, 중성까지 일치하는지 확인합니다.
 
 ChosungSearch.isSearch('과', '광고주') // true, 중성까지 일치하는지 확인합니다.
 
-ChosungSearch.isSearch('광', '광고주') // true
+ChosungSearch.isSearch('광', '광고주') // true, 종성 일치.
 
-ChosungSearch.is('관', '광고주') // false 
+ChosungSearch.is('관', '광고주') // false, 종성 미일치.
 ```
 
 ### ChosungSearch.searchList (alias `ChosungSearch.sl`)

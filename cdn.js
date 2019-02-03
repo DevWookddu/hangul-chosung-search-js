@@ -101,8 +101,8 @@
           offset = targetStrChosung.indexOf(searchStrChosung)
         }
       }
-      return false
     }
+    return false
   }
   
   window.ChosungSearch = {
