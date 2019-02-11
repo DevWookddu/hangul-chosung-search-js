@@ -1,6 +1,5 @@
-var hangul = require('hangul-js')
-
-module.exports = (function () {
+var hangul = typeof module !== 'undefined' ? require('hangul-js') : window.Hangul
+var ChosungSearch = (function () {
   'use strict';
 
   var _existOnlyVowel = function (searchStrArr) {
@@ -114,3 +113,7 @@ module.exports = (function () {
     sl: searchList
   }
 })();
+
+if (typeof module !== 'undefined') {
+  module.exports = ChosungSearch
+}
