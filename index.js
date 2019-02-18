@@ -1,6 +1,6 @@
-var hangul = typeof module !== 'undefined' ? require('hangul-js') : window.Hangul
-var ChosungSearch = (function () {
+(function () {
   'use strict';
+  var hangul = typeof module !== 'undefined' ? require('hangul-js') : window.Hangul
 
   var _existOnlyVowel = function (searchStrArr) {
     return searchStrArr.some(function (char) {
@@ -106,14 +106,20 @@ var ChosungSearch = (function () {
     return false
   }
 
-  return {
+  var ChosungSearch = {
     isSearch: isSearch,
     searchList: searchList,
     is: isSearch,
     sl: searchList
   }
-})();
 
-if (typeof module !== 'undefined') {
-  module.exports = ChosungSearch
-}
+  if (typeof define == 'function' && define.amd) {
+    define(function(){
+      return ChosungSearch;
+    });
+  } else if (typeof module !== 'undefined') {
+    module.exports = ChosungSearch;
+  } else {
+    window.ChosungSearch = ChosungSearch;
+  }
+})();

@@ -1,6 +1,6 @@
 {
   "name": "hangul-chosung-search-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "hangul-js를 이용한 한글 초성(+중성+종성) 검색 라이브러리입니다.",
   "main": "index.js",
   "scripts": {
