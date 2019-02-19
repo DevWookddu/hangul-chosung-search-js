@@ -5,7 +5,7 @@
   if (typeof define == 'function' && define.amd || typeof module !== 'undefined') {
     hangul = require('hangul-js')
   } else {
-    window.ChosungSearch = ChosungSearch;
+    hangul = window.Hangul;
   }
 
   var _existOnlyVowel = function (searchStrArr) {
