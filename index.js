@@ -1,6 +1,12 @@
 (function () {
   'use strict';
-  var hangul = typeof module !== 'undefined' ? require('hangul-js') : window.Hangul
+  var hangul = null;
+
+  if (typeof define == 'function' && define.amd || typeof module !== 'undefined') {
+    hangul = require('hangul-js')
+  } else {
+    window.ChosungSearch = ChosungSearch;
+  }
 
   var _existOnlyVowel = function (searchStrArr) {
     return searchStrArr.some(function (char) {

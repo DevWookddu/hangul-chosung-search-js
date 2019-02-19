@@ -17,14 +17,39 @@ npm install hangul-chosung-search-js
 일반 웹페이지에서 사용하시려면 hangul.js를 먼저 로드해주셔야 합니다.
   
 ```html
-<script src="https://unpkg.com/hangul-js@0.2.5/hangul.js"></script>
-<script src="https://unpkg.com/hangul-chosung-search-js@1.0.2/index.js" type="text/javascript"></script>
+<script src="/path/to/hangul.js" type="text/script"></script>
+<script src="/path/to/hangul-chosung-search.js" type="text/javascript"></script>
 ```
 
 ChosungSearch라는 변수로 전역에 노출됩니다.
 
 ```js
 window.ChosungSearch
+```
+
+### RequireJS 사용 방법
+
+RequireJS 방식으로 이용하시면 일반 웹페이지에서 전역변수로 노출되지 않습니다.
+
+```js
+// require.config.js
+require.config({
+  baseUrl: '/path/js',
+  paths: {
+    'hangul-js': 'subPath/hangul', // 반드시 모듈명을 hangul-js로 해야합니다.
+    'hangul-chosung-search-js': 'subPath/hangul-chosung-search'
+  },
+  shim: {
+    'hangul-chosung-search-js': {
+      deps: ['hangul-js']
+    }
+  }
+});
+
+// example
+require(['hangul-chosung-search-js'], function(ChosungSearch) {
+  console.log(ChosungSearch.is('과', '광고주')); // true
+})
 ```
 
 ### node.js 사용 방법
@@ -54,7 +79,7 @@ ChosungSearch.isSearch('광', '광고주') // true, 종성 일치.
 
 ChosungSearch.is('관', '광고주') // false, 종성 미일치.
 
-ChosungSearch.is('ㅏ', '광고주') // false
+ChosungSearch.is('ㅏ', '광고주') // false, 모음 검색 지원하지 않음.
 ```
 
 ### ChosungSearch.searchList (alias `ChosungSearch.sl`)
@@ -76,5 +101,5 @@ ChosungSearch.searchList('광', ['광고주', '엔피엠', '석관', '석궁']) 
 
 ChosungSearch.sl('관', ['광고주', '엔피엠', '석관', '석궁']) // ['석관']
 
-ChosungSearch.sl('ㅏ', ['광고주', '엔피엠', '석관']) // []
+ChosungSearch.sl('ㅏ', ['광고주', '엔피엠', '석관']) // [], 모음 검색 지원하지 않음.
 ```
