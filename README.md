@@ -111,7 +111,7 @@ ChosungSearch.sl('관', ['광고주', '엔피엠', '석관', '석궁']) // ['석
 
 ChosungSearch.sl('ㅏ', ['광고주', '엔피엠', '석관']) // [], 모음 검색 지원하지 않음.
 
-ChosungSearch.is('리더', ['캘린더', '더 리더'], false) // ['캘린더', '더 리더']
+ChosungSearch.sl('리더', ['캘린더', '더 리더'], false) // ['캘린더', '더 리더']
 
-ChosungSearch.is('리더', ['캘린더', '더 리더'], true) // ['더 리더']
+ChosungSearch.sl('리더', ['캘린더', '더 리더'], true) // ['더 리더']
 ```
