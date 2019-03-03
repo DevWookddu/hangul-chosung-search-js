@@ -62,7 +62,9 @@ var ChosungSearch = require('hangul-chosung-search-js')
 
 ### ChosungSearch.isSearch (alias `ChosungSearch.is`)
 
-`ChosungSearch.isSearch(searchStr:string, targetStr:string)`은 문자열 searchStr의 초성을 targetStr의 초성(+중성+종성)과 비교하여 일치하는 문자열이 있을 경우 true를 반환. 아닐경우 false를 반환합니다.
+`ChosungSearch.isSearch(searchStr:string, targetStr:string, jungsungExactlyMatch:boolean = false)`은 문자열 searchStr의 초성을 targetStr의 초성(+중성+종성)과 비교하여 일치하는 문자열이 있을 경우 true를 반환. 아닐경우 false를 반환합니다.
+
+3번째 parameter인 `jungsungExactlyMatch`는 중성(모음)을 정확히 일치시킬지의 여부입니다.
 
 `ChosungSearch.is`처럼 짧은 이름으로 사용할 수도 있습니다.
 
@@ -80,11 +82,17 @@ ChosungSearch.isSearch('광', '광고주') // true, 종성 일치.
 ChosungSearch.is('관', '광고주') // false, 종성 미일치.
 
 ChosungSearch.is('ㅏ', '광고주') // false, 모음 검색 지원하지 않음.
+
+ChosungSearch.is('리더', '캘린더', false) // true, '린더'를 분리하면 '리더'를 포함하므로 일치.
+
+ChosungSearch.is('리더', '캘린더', true) // false, '리더'와 완벽히 일치하는 문자열이 없음.
 ```
 
 ### ChosungSearch.searchList (alias `ChosungSearch.sl`)
 
-`ChosungSearch.searchList(searchStr:string, arr:array)`은 문자열 searchStr의 초성을 arr의 각 문자열들의 초성(+중성+종성)과 비교하여 일치하는 문자열들을 배열로 반환해주는 함수입니다.
+`ChosungSearch.searchList(searchStr:string, arr:array, jungsungExactlyMatch:boolean = false)`은 문자열 searchStr의 초성을 arr의 각 문자열들의 초성(+중성+종성)과 비교하여 일치하는 문자열들을 배열로 반환해주는 함수입니다.
+
+3번째 parameter인 `jungsungExactlyMatch`는 중성(모음)을 정확히 일치시킬지의 여부입니다.
 
 `ChosungSearch.sl`처럼 짧은 이름으로 사용할 수도 있습니다.
 
@@ -102,4 +110,8 @@ ChosungSearch.searchList('광', ['광고주', '엔피엠', '석관', '석궁']) 
 ChosungSearch.sl('관', ['광고주', '엔피엠', '석관', '석궁']) // ['석관']
 
 ChosungSearch.sl('ㅏ', ['광고주', '엔피엠', '석관']) // [], 모음 검색 지원하지 않음.
+
+ChosungSearch.is('리더', ['캘린더', '더 리더'], false) // ['캘린더', '더 리더']
+
+ChosungSearch.is('리더', ['캘린더', '더 리더'], true) // ['더 리더']
 ```
