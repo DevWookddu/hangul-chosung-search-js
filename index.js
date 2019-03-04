@@ -83,7 +83,7 @@
     var find = false;
     var disassembleTargetStr = null;
     if ((offset = targetStrChosung.indexOf(searchStrChosung)) > -1) {
-      while (offset > -1) {
+      do {
         targetStr = targetStr.substr(offset);
         targetStrChosung = targetStrChosung.substr(offset);
         find = parsedArr.every(function (p, pIndex) {
@@ -107,11 +107,9 @@
         if (find) {
           return true;
         } else {
-          targetStrChosung = targetStrChosung.substr(searchStrChosung.length);
-          targetStr = targetStr.substr(searchStrChosung.length);
-          offset = targetStrChosung.indexOf(searchStrChosung);
+          offset = targetStrChosung.substr(1).indexOf(searchStrChosung) + 1;
         }
-      }
+      } while (offset > 0)
     }
     return false;
   }
