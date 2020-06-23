@@ -125,7 +125,7 @@
     define(function () {
       return ChosungSearch;
     });
-  } else if (typeof module !== 'undefined') {
+  } else if (typeof module !== 'undefined' && module.exports) {
     module.exports = ChosungSearch;
   } else {
     window.ChosungSearch = ChosungSearch;
